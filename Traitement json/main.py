@@ -1,5 +1,9 @@
 # imports
-import os, datetime
+import os, main
+
+# variables
+count = -1
+
 
 # functions
 def get_path():
@@ -15,7 +19,14 @@ def read_json():
     return json_content
 
 
-def del_file(file_path):
-    os.remove(file_path)
+def del_file():
+    os.remove(get_path())
+
+
+def new_file():
+    main.count += 1
+    name = f"day_{main.count}_all_captors_file"
+    path = "./day_json/" + name
+
 
 # main code
