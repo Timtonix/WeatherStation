@@ -3,7 +3,7 @@ import os, main
 
 # variables
 count = -1
-
+extension = ".json"
 
 # functions
 def get_path():
@@ -26,7 +26,8 @@ def del_file():
 def new_file():
     main.count += 1
     name = f"day_{main.count}_all_captors_file"
-    path = "./day_json/" + name
+    path = "./day_json/" + name + main.extension
+    print(path)
 
 
 # main code
