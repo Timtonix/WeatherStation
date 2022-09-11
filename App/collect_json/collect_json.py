@@ -24,10 +24,6 @@ class CollectJson:
                 json.dump({}, weather_day_file, indent=4)
                 return True
 
-    def load_weather_file(self):
-        with open("weather_json/data.json", "r") as json_data:
-            json_content = json.load(json_data)
-            return json_content
 
     def load_day_weather_file(self):
         created = self.create_day_weather_file()
@@ -46,9 +42,8 @@ class CollectJson:
             json.dump(modified_day_weather, json_file, indent=4)
         return modified_day_weather
 
-    def main(self):
+    def main(self, weather_data):
         timestamp = self.get_timestamp()
-        weather_file = self.load_weather_file()
         day_weather_file = self.load_day_weather_file()
-        process = self.process_weather_files(weather_file, day_weather_file, timestamp)
+        process = self.process_weather_files(weather_data, day_weather_file, timestamp)
         return self.write_in_the_day_file(process)

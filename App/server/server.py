@@ -1,6 +1,6 @@
 import zmq
 import asyncio
-
+import App.collect_json.collect_json as collect_json
 
 
 class Server:
@@ -28,7 +28,7 @@ async def main():
 
     while True:
         message = await server.received_message()
-        print(message)
+        collect_json.main(message)
         server.send_message("Thank You")
 
 asyncio.run(main())
