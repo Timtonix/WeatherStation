@@ -6,6 +6,7 @@ import collect_json
 
 collect_json = collect_json.CollectJson()
 
+
 class TestCollectJson:
     def test_load_weather_file(self):
         json = collect_json.load_weather_file()
@@ -47,7 +48,7 @@ class TestCollectJson:
             assert json_content == modified_day_weather
 
     def test_main(self):
-        writed = collect_json.main()
+        writed = collect_json.main({"temp": 23, "humidity": 154})
         with open(f"day_weather_json/{collect_json.get_date()}.json", "r") as json_file:
             json_content = json.loads(json_file.read())
         assert writed == json_content

@@ -1,7 +1,7 @@
 import json, datetime, os
 
-class CollectJson:
 
+class CollectJson:
     def __init__(self):
         pass
 
@@ -15,23 +15,18 @@ class CollectJson:
         return timestamp
 
     def create_day_weather_file(self):
-        dir = os.listdir('./day_weather_json')
+        directory = os.listdir('../collect_json/day_weather_json/')
         date = f"{self.get_date()}.json"
-        if date in dir:
+        if date in directory:
             return False
         else:
             with open(f"./day_weather_json/{self.get_date()}.json", "x") as weather_day_file:
                 json.dump({}, weather_day_file, indent=4)
                 return True
 
-    def load_weather_file(self):
-        with open("weather_json/data.json", "r") as json_data:
-            json_content = json.load(json_data)
-            return json_content
-
     def load_day_weather_file(self):
-        created = self.create_day_weather_file()
-        with open(f"./day_weather_json/{self.get_date()}.json", "r") as json_file:
+        self.create_day_weather_file()
+        with open(f"../collect_json/day_weather_json/{self.get_date()}.json", "r") as json_file:
             json_content = json.loads(json_file.read())
             return json_content
 
@@ -42,13 +37,12 @@ class CollectJson:
         return day_weather
 
     def write_in_the_day_file(self, modified_day_weather):
-        with open(f"day_weather_json/{self.get_date()}.json", "w") as json_file:
+        with open(f"../collect_json/day_weather_json/{self.get_date()}.json", "w") as json_file:
             json.dump(modified_day_weather, json_file, indent=4)
         return modified_day_weather
 
-    def main(self):
+    def main(self, weather_data):
         timestamp = self.get_timestamp()
-        weather_file = self.load_weather_file()
         day_weather_file = self.load_day_weather_file()
-        process = self.process_weather_files(weather_file, day_weather_file, timestamp)
+        process = self.process_weather_files(weather_data, day_weather_file, timestamp)
         return self.write_in_the_day_file(process)
