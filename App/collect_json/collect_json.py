@@ -20,11 +20,10 @@ class CollectJson:
                 json.dump({}, weather_day_file, indent=4)
                 return True
 
-
     def load_weather_file(self):
         with open("weather_json/data.json", "r") as json_data:
             json_content = json.load(json_data)
-        return json_content
+            return json_content
 
     def load_day_weather_file(self):
         created = self.create_day_weather_file()
