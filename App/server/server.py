@@ -1,6 +1,8 @@
+import json
+
 import zmq
 import asyncio
-import App.collect_json.collect_json as collect_json
+import App.collect_json.collect_json
 
 
 class Server:
@@ -25,6 +27,8 @@ class Server:
 async def main():
     server = Server()
     server.bind(port=4554)
+    # Create the collect_json object
+    collect_json = App.collect_json.collect_json.CollectJson()
 
     while True:
         message = await server.received_message()

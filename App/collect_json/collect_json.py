@@ -1,7 +1,7 @@
 import json, datetime, os
 
-class CollectJson:
 
+class CollectJson:
     def __init__(self):
         pass
 
@@ -15,19 +15,18 @@ class CollectJson:
         return timestamp
 
     def create_day_weather_file(self):
-        dir = os.listdir('./day_weather_json')
+        directory = os.listdir('../collect_json/day_weather_json/')
         date = f"{self.get_date()}.json"
-        if date in dir:
+        if date in directory:
             return False
         else:
             with open(f"./day_weather_json/{self.get_date()}.json", "x") as weather_day_file:
                 json.dump({}, weather_day_file, indent=4)
                 return True
 
-
     def load_day_weather_file(self):
-        created = self.create_day_weather_file()
-        with open(f"./day_weather_json/{self.get_date()}.json", "r") as json_file:
+        self.create_day_weather_file()
+        with open(f"../collect_json/day_weather_json/{self.get_date()}.json", "r") as json_file:
             json_content = json.loads(json_file.read())
             return json_content
 

@@ -15,6 +15,7 @@ class Client:
         message = self.socket.recv()
         message = message.decode('utf-8')
 
+
 client = Client()
 client.connect(4554)
 
