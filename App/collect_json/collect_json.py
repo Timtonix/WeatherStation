@@ -40,8 +40,8 @@ class CollectJson:
             new_file = open(f"./day_json/{date}{self.extension}", "x")
             return new_file
         except FileExistsError:
-            new_file = open(f"./day_json/{date}{self.extension}", "r")
-            return
+            new_file = open(f"./day_json/{date}{self.extension}", "r+")
+            return new_file
 
     def get_date(self):
         date = datetime.now(tz=pytz.timezone('Europe/Paris'))
