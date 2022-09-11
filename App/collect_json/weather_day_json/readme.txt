@@ -1,0 +1,1 @@
+this folder serves to stock the day jsons
