@@ -26,9 +26,6 @@ class CollectJson:
             json_content = json.load(json_file)
         return json_content
 
-    def del_file(self):
-        os.remove(self.get_min_path())
-
     def read_day_json(self):
         day_json = self.open_day_json()
         json_content = json.load(day_json)
