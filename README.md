@@ -6,6 +6,7 @@ WeatherStation est une station météo connecté crée pour être utilisé sur u
 Nous avons utilisé du C++ pour l'esp32 et du Python pour le raspberry.
 ---
 ## Todo
--[x] Faire le serveur
--[] Faire le client
--[] Relier les deux
+
+- [x] Faire le serveur
+- [ ] Faire le client
+- [ ] Relier les deux
