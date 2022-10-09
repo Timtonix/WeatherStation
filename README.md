@@ -10,3 +10,5 @@ Nous avons utilisé du C++ pour l'esp32 et du Python pour le raspberry.
 - [x] Faire le serveur
 - [ ] Faire le client
 - [ ] Relier les deux
+- [ ] Faire le site
+ 
