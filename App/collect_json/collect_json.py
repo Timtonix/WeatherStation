@@ -14,19 +14,20 @@ class CollectJson:
         timestamp = datetime.datetime.timestamp(datetime.datetime.now())
         return timestamp
 
-    def create_day_weather_file(self):
-        directory = os.listdir('../collect_json/weather_day_json/')
+    def create_day_weather_file(self):  # Cette fonction renvoie True si le fichier vient d'être crée ou False si le fichier existe déjà
+        directory = os.listdir('../collect_json/day_weather_json/')
         date = f"{self.get_date()}.json"
         if date in directory:
-            return False
-        else:
-            with open(f"./day_weather_json/{self.get_date()}.json", "x") as weather_day_file:
-                json.dump({}, weather_day_file, indent=4)
-                return True
+            return False  # Comme le fichier existe déjà on renvoie false
+        else: # Si le fichier est vide alors on le crée et on met la template de base -> {"temp": {"timestamp": False}, "humidity": {"timestamp": False}}
+            #Cela permet au code de comprendre comment est structuré le json
+            with open(f"../collect_json/day_weather_json/{self.get_date()}.json", "x") as weather_day_file:
+                json.dump({"temp": {"timestamp": False}, "humidity": {"timestamp": False}}, weather_day_file, indent=4)
+                return True  # On a finit de crée le fichier donc on renvoie true
 
     def load_day_weather_file(self):
         self.create_day_weather_file()
-        with open(f"../collect_json/weather_day_json/{self.get_date()}.json", "r") as json_file:
+        with open(f"../collect_json/day_weather_json/{self.get_date()}.json", "r") as json_file:
             json_content = json.loads(json_file.read())
             return json_content
 
@@ -37,12 +38,15 @@ class CollectJson:
         return day_weather
 
     def write_in_the_day_file(self, modified_day_weather):
-        with open(f"../collect_json/weather_day_json/{self.get_date()}.json", "w") as json_file:
+        with open(f"../collect_json/day_weather_json/{self.get_date()}.json", "w") as json_file:
             json.dump(modified_day_weather, json_file, indent=4)
         return modified_day_weather
 
     def main(self, weather_data):
         timestamp = self.get_timestamp()
-        day_weather_file = self.load_day_weather_file()
+        if self.create_day_weather_file():
+            day_weather_file = self.load_day_weather_file()
+        else:
+            day_weather_file = self.load_day_weather_file()
         process = self.process_weather_files(weather_data, day_weather_file, timestamp)
         return self.write_in_the_day_file(process)

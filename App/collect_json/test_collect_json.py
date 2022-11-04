@@ -8,9 +8,6 @@ collect_json = collect_json.CollectJson()
 
 
 class TestCollectJson:
-    def test_load_weather_file(self):
-        json = collect_json.load_weather_file()
-        assert type(json) is dict
 
     def test_load_day_weather_file(self):
         json = collect_json.load_day_weather_file()
