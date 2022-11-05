@@ -8,7 +8,8 @@ Nous avons utilisé du C++ pour l'esp32 et du Python pour le raspberry.
 ## Todo
 
 - [x] Faire le serveur
-- [ ] Faire le client
-- [ ] Relier les deux
+- [x] Faire le client
+- [x] Relier les deux
+- [ ] Déployer le tout
 - [ ] Faire le site
  
