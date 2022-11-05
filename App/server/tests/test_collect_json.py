@@ -20,7 +20,7 @@ class TestCollectJson:
 
     def test_create_day_weather_file(self):
         json_file = collect_json.create_day_weather_file()
-        dir = os.listdir('./day_weather_json')
+        dir = os.listdir('../day_weather_json')
         date = f"{collect_json.get_date()}.json"
         if date in dir:
             assert True
