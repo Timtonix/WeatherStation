@@ -32,8 +32,8 @@ async def main():
 
     while True:
         message = await server.received_message()
-        message = json.loads(message)
         print(message)
+        message = json.loads(message)
         collect_json.main(message)
         server.send_message("Thank You")
 
