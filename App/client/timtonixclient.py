@@ -19,20 +19,41 @@ Software
 * Network lib
 * Socket
 """
-#import network
+import network
 import socket
-#import dht
-#import machine
+import dht
+import machine
+import json
+import time
 
-#d = dht.DHT11(machine.Pin(4))
+d = dht.DHT11(machine.Pin(4))
 client = socket.socket()
-client.connect(('192.168.1.92', 4554))
-client.send(b'HELLLLLLOO')
-print(client.recv(1024))
+is_connected = False
+while is_connected != True:
+    try:
+        client.connect(('192.168.1.92', 4554))
+        is_connected = True
+    except OSError:
+        print("Can't connect")
+        is_connected = False
+        time.sleep(5)
+flag = 0
 
-"""while True:
+while flag == 0:
     try:
         d.measure()
-        print(d.temperature())
+        print("It's work !")
+        flag = 1
     except OSError:
-        print("Oops! this crash...")"""
+        flag = 0
+        print("Something wrong with d.measure()")
+
+response = "Ok"
+
+while response != "QUIT":
+    json_message = {'temp': d.temperature(), 'humidity': d.humidity()}
+    print(json_message)
+    client.send(json.dumps(json_message).encode('utf-8'))
+    response = client.recv(1024).decode('utf-8')
+    print(response)
+    time.sleep(300)

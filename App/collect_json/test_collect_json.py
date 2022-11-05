@@ -1,8 +1,7 @@
-import pytest
 import os
 import json
 import datetime
-import collect_json
+from App.server import collect_json
 
 collect_json = collect_json.CollectJson()
 

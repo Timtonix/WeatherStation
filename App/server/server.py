@@ -1,8 +1,7 @@
 import json
-
 import socket
 import asyncio
-import App.collect_json.collect_json
+from collect_json import *
 
 
 class Server:
@@ -22,22 +21,24 @@ class Server:
 
     def send_message(self, message):
         message_bit = message.encode('utf-8')
-        self.conn.sendall(message_bit)
+        self.conn.send(message_bit)
 
 
 async def main():
     server = Server()
     server.bind(port=4554)
     # Create the collect_json object
-    collect_json = App.collect_json.collect_json.CollectJson()
+    collect_json = CollectJson()
 
     while True:
         message = await server.received_message()
         print(f"Connect with {server.addr}")
         print(message)
-        server.send_message("Thank You")
-        message = json.loads(message)
-        collect_json.main(message)
-        server.send_message("Thank You")
+        try:
+            message = json.loads(message)
+            collect_json.main(message)
+        except ValueError:
+            server.send_message("QUIT")
+        server.send_message("Ok")
 
 asyncio.run(main())
