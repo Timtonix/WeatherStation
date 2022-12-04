@@ -31,7 +31,7 @@ client = socket.socket()
 is_connected = False
 while is_connected != True:
     try:
-        client.connect(('192.168.1.92', 4554))
+        client.connect(('192.168.1.103', 4554))
         is_connected = True
     except OSError:
         print("Can't connect")
@@ -57,3 +57,5 @@ while response != "QUIT":
     response = client.recv(1024).decode('utf-8')
     print(response)
     time.sleep(300)
+
+client.close()
