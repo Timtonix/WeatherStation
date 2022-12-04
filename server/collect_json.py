@@ -31,7 +31,6 @@ class CollectJson:
             json_content = json.loads(json_file.read())
             return json_content
 
-
     def process_weather_files(self, weather_data, day_weather, timestamp):
         day_weather["temp"][f"{timestamp}"] = weather_data["temp"]
         day_weather["humidity"][f"{timestamp}"] = weather_data["humidity"]

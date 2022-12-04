@@ -1,7 +1,7 @@
 import os
 import json
 import datetime
-from App.server import collect_json
+from server import collect_json
 
 collect_json = collect_json.CollectJson()
 
