@@ -1,8 +1,7 @@
-import pytest
 import os
 import json
 import datetime
-import collect_json
+from App.server import collect_json
 
 collect_json = collect_json.CollectJson()
 
@@ -21,7 +20,7 @@ class TestCollectJson:
 
     def test_create_day_weather_file(self):
         json_file = collect_json.create_day_weather_file()
-        dir = os.listdir('./day_weather_json')
+        dir = os.listdir('../day_weather_json')
         date = f"{collect_json.get_date()}.json"
         if date in dir:
             assert True
