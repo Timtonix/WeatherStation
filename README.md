@@ -12,4 +12,5 @@ Nous avons utilisé du C++ pour l'esp32 et du Python pour le raspberry.
 - [x] Relier les deux
 - [ ] Déployer le tout
 - [ ] Faire le site
+- [ ] Documentation
  
