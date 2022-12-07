@@ -22,7 +22,7 @@ class CollectJson:
         else: # Si le fichier est vide alors on le crée et on met la template de base -> {"temp": {"timestamp": False}, "humidity": {"timestamp": False}}
             #Cela permet au code de comprendre comment est structuré le json
             with open(f"day_weather_json/{self.get_date()}.json", "x") as weather_day_file:
-                json.dump({"temp": {"timestamp": False}, "humidity": {"timestamp": False}}, weather_day_file, indent=4)
+                json.dump({"temp": {"timestamp": False}, "humidity": {"timestamp": False}, "rain": {"timestamp": False}}, weather_day_file, indent=4)
                 return True  # On a finit de crée le fichier donc on renvoie true
 
     def load_day_weather_file(self):
@@ -34,6 +34,7 @@ class CollectJson:
     def process_weather_files(self, weather_data_sensor, day_weather_file, timestamp):
         day_weather_file["temp"][f"{timestamp}"] = weather_data_sensor["temp"]
         day_weather_file["humidity"][f"{timestamp}"] = weather_data_sensor["humidity"]
+        day_weather_file["rain"][f"{timestamp}"] = weather_data_sensor["rain"]
         return day_weather_file
 
     def write_in_the_day_file(self, modified_day_weather):

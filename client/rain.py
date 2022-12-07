@@ -3,7 +3,7 @@ import time
 p13 = Pin(13, Pin.IN)
 
 
-def get_dry() -> bool:
+def get_rain() -> bool:
     for i in range(1, 100):
         print(i)
         print(p13.value())
@@ -11,11 +11,13 @@ def get_dry() -> bool:
             return True
         time.sleep(0.01)
 
+
+
 """
     Example :
     time.sleep(5)
     print("Go")
     time.sleep(1)
-    if get_dry():
+    if get_rain():
          print("It's raining !")
 """
