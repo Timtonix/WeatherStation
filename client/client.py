@@ -10,15 +10,15 @@ import time
     -Temperature/DHTSensor
 """
 dht = DHTSensor(4)
-client = socket.socket()
 is_connected = False
 while is_connected != True:
     try:
-        client.connect(('192.168.1.103', 4554))
+        client = socket.socket()
+        client.connect(('192.168.1.92', 4554))
         is_connected = True
     except OSError:
         print("Can't connect")
-        is_connected = False
+        client.close()
         time.sleep(5)
 
 response = "Ok"
@@ -32,4 +32,3 @@ while response != "QUIT":
     time.sleep(10)
 
 client.close()
-
