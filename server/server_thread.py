@@ -10,7 +10,7 @@ def process_client(client):
         request = request.decode('utf-8')
         print(request)
         if not request:
-            print("Je m'arrête y'a R")
+            print(">Client has disconnected")
             break
         message = "Continue"
         message = message.encode('utf-8')
@@ -20,8 +20,8 @@ def process_client(client):
             collect_json.main(request)
             client.send(message)
         except ValueError:
-            print("Client send a false JSON")
-            message = "wtf"
+            print(">Client send a false JSON")
+            message = "QUIT"
             message = message.encode('utf-8')
             client.send(message)
 
@@ -29,16 +29,16 @@ def process_client(client):
 socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 socket.bind(("", 4554))
 socket.listen(1)
-print("I'm listening")
+print(">I'm listening")
 collect_json = CollectJson()
 
 while True:
-    print("waiting...")
+    print(">Waiting for a client")
     client, address = socket.accept()
     print(f"Connect with {address}")
     request = threading.Thread(target=process_client, args=(client,))
     request.start()
-    print("Just for testing")
+    print(">Before request.join()")
     request.join()
-    print("Finish all the code")
+    print(">Finish all the code")
 
