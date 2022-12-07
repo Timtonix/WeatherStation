@@ -9,7 +9,7 @@ import time
     -Socket
     -Temperature/DHTSensor
 """
-dht = DHTSensor(4)
+dht = DHTSensor()
 is_connected = False
 while is_connected != True:
     try:
