@@ -8,7 +8,7 @@ import time
     -Socket
     -Temperature/DHTSensor
 """
-dht = DHT_sensor(4)
+dht = DHTSensor(4)
 client = socket.socket()
 is_connected = False
 while is_connected != True:

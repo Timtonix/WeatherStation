@@ -2,8 +2,7 @@ import machine
 import dht
 
 
-class DHT_sensor:
-
+class DHTSensor:
     def __init__(self, pin):
         self.d = dht.DHT11(machine.Pin(pin))
         flag = 0
@@ -21,5 +20,4 @@ class DHT_sensor:
 
     def get_humidity(self):
         return self.d.humidity()
-
 
