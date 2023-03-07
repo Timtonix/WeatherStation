@@ -11,6 +11,7 @@ Nous avons utilisé du micropython pour l'esp32 et du Python pour le raspberry.
 - [x] Faire le client
 - [x] Relier les deux
 - [ ] Déployer le tout
+- [ ] Créer l'API
 - [ ] Faire le site
 - [ ] Documentation
  
