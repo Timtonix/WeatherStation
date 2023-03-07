@@ -1,5 +1,5 @@
 # WeatherStation
-A weather station code in python and C++ with raspberry and ESP32
+A weather station code in python and micropython with raspberry and ESP32
 ---
 
 WeatherStation est une station météo connecté crée pour être utilisé sur un ESP32 en tant que client et sur un rasberry en tant que serveur.
